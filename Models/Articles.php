@@ -2,7 +2,7 @@
 
 namespace Models;
 
-class M_Articles
+class Articles
 {
     // ссылка на экземпляр класса
     private static $instance;

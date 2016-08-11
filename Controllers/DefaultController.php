@@ -2,7 +2,7 @@
 
 namespace Controllers;
 
-use Models\M_Articles;
+use Models\Articles;
 
 class DefaultController extends C_Base
 {
@@ -11,8 +11,8 @@ class DefaultController extends C_Base
     {
         $pageNum = $_GET['pageNum'];
 
-        $total = count(M_Articles::getInstance()->getAllArticles());
-        $articles = M_Articles::getInstance()->getArticles($pageNum);
+        $total = count(Articles::getInstance()->getAllArticles());
+        $articles = Articles::getInstance()->getAllArticles();
 
         $this->content = $this->Template('themes/index.php', array('short_articles' => $articles, 'pageTotal' => $total));
     }
