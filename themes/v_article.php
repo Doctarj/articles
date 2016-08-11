@@ -7,11 +7,12 @@
 ?>
 
 <hr>
-<h2><?php echo $article['title'] ?></h2>
+<h2><?php echo $article[0]['title'] ?></h2>
+
 *************************<br>
     Содержание: <br>
 *************************<br>
-    <?php echo $article['content']?>
+    <?php echo $article[0]['content']?>
     <br>
 <hr>
 

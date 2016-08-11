@@ -42,4 +42,14 @@ class Articles
     {
         $this->mysql->insert("articles", array('title' => $title, 'content' => $content));
     }
+    public function getOneArticle($id_article){
+        $query = "SELECT * FROM `articles` WHERE `id_article` = $id_article";
+       return $this->mysql->select($query);
+    }
+    public function articles_edit($title, $content, $id_article){
+        $this->mysql->update("articles", array('title' => $title, 'content' => $content), "`id_article` = $id_article");
+    }
+    public  function articles_delete($id_article){
+        $this->mysql->delete("articles", "`id_article` = $id_article");
+    }
 }

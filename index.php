@@ -14,9 +14,7 @@ function __autoload($classname)
 }
 
 
-//подключаемся к БД
-require_once('startup.php');
-startup();
+
 
 $control = (isset($_GET['ctrl'])) ? $_GET['ctrl'] : '';
 $action = 'action_';

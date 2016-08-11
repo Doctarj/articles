@@ -19,7 +19,7 @@ require_once 'model.php';
             <?php foreach ($short_articles as $article): ?>
 
                 <li class="list-group-item list-group-item-info"><a
-                        href="?act=show&id=<?php echo $article['id_article'] ?>">
+                        href="?ctrl=editor&act=show&id=<?php echo $article['id_article'] ?>">
 
                         <?php echo $article['content'] . "   " ?><br>
                         <i>  <?php echo $article['date'] ?> </i>

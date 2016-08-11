@@ -15,14 +15,14 @@ $error - ошибка юзера
     <div class="row">
         <div class="form-group">
             <label>Название</label><sup style="color:red">*</sup>: <br>
-            <input type="text" class="form-control" name="title" value="<?php echo $article['title'];
+            <input type="text" class="form-control" name="title" value="<?php echo $article[0]['title'];
             ?>">
         </div>
     </div>
     <div class="row">
         <div class="form-group">
             <label>Содержание</label>: <br>
-            <textarea class="form-control" rows="10" name="content"><?php echo $article['content']; ?></textarea>
+            <textarea class="form-control" rows="10" name="content"><?php echo $article[0]['content']; ?></textarea>
         </div>
     </div>
     <div class="row">

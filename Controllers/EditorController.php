@@ -2,15 +2,15 @@
 
 namespace Controllers;
 
-use Models\M_Articles;
+use Models\Articles;
 
 class EditorController extends C_Base
 {
 
     public function action_show()
     {
-        $article = articles_get($_GET['id']);
-        $this->title = $article['title'];
+        $article = Articles::getInstance()->getOneArticle($_GET['id']);
+
         $this->content = $this->Template('themes/v_article.php', array('article' => $article));
 
     }
@@ -19,8 +19,8 @@ class EditorController extends C_Base
     public function action_index()
     {
         $this->title = 'Панель редактора';
-        $total = count(M_Articles::getInstance()->getAllArticles());
-        $articles = M_Articles::getInstance()->getArticles();
+        $total = count(Articles::getInstance()->getAllArticles());
+        $articles = Articles::getInstance()->getArticles();
         $this->content = $this->Template('themes/editor.php', array('articles' => $articles));
     }
 
@@ -29,18 +29,16 @@ class EditorController extends C_Base
     public function action_edit()
     {
         if (!empty($_POST) && isset($_POST['title']) && isset($_POST['content']) && isset ($_GET['id'])) {
-            // успешно редактирование статьи, редирект
-            if (articles_edit($_GET['id'], $_POST['title'], $_POST['content'])) {
-                die(header('Location: index.php'));
-            }
-            $title = $_POST['title'];
-            $content = $_POST['content'];
-            $id_article = $_GET['id'];
-            $error = true;
+
+
+           Articles::getInstance()->articles_edit($_POST['title'], $_POST['content'],$_GET['id']);
+                $this->redirect('index.php');
+
+
         }
 
-        $article = articles_get($_GET['id']);
-        $this->title = $article['title'];
+        $article = Articles::getInstance()->getOneArticle($_GET['id']);
+
         $this->content = $this->Template('themes/v_edit.php', array('article' => $article));
 
     }
@@ -49,7 +47,7 @@ class EditorController extends C_Base
     {
         if (!empty($_POST) && isset($_POST['title']) && isset($_POST['content'])) {
 
-            M_Articles::getInstance()->articles_new($_POST['title'], $_POST['content']);
+            Articles::getInstance()->articles_new($_POST['title'], $_POST['content']);
 
             $this->redirect('index.php');
         }
@@ -59,7 +57,8 @@ class EditorController extends C_Base
 
     public function action_delete()
     {
-        articles_delete($_GET['id']);
+        Articles::getInstance()->articles_delete($_GET['id']);
+        $this->redirect('index.php');
     }
 
 

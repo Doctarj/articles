@@ -1,7 +1,7 @@
 <?php
 namespace Controllers;
 
-include_once "startup.php";
+
 
 abstract class C_Base extends C_Controller
 {
@@ -13,7 +13,7 @@ abstract class C_Base extends C_Controller
     {
 
         // создание линка подключение к БД
-        startup();
+
 
 
     }
