@@ -1,5 +1,5 @@
 <?php
-
+namespace Controllers;
 //
 // Базовый класс контроллера.
 //
@@ -46,7 +46,7 @@ abstract class C_Controller
 
         // Генерация HTML в строку.
         ob_start();
-        include 'W:/domains/articlesBeta/' . "$fileName";
+        include '' . "$fileName";
         return ob_get_clean();
     }
 

@@ -13,10 +13,10 @@ $error - ошибка юзера
 <?php endif; ?>
 <form method="post">
     Название<sup style="color:red">*</sup>: <br>
-    <input type="text" name="title" value="<?php echo $title ?>">
+    <input type="text" name="title" value="">
     <br><br>
     Содержание: <br>
-    <textarea name="content"><?php echo $content?></textarea>
+    <textarea name="content"></textarea>
     <br>
     <input type="submit" value="Добавить">
 </form>

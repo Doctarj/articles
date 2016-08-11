@@ -1,5 +1,8 @@
 <?php
-include_once "W:/domains/articlesBeta/startup.php";
+namespace Controllers;
+
+include_once "startup.php";
+
 abstract class C_Base extends C_Controller
 {
     protected $title;        // заголовок сайта
@@ -28,6 +31,11 @@ abstract class C_Base extends C_Controller
         $page = $this->Template('themes/v_main.php', $vars);
 
         echo $page;
+    }
+
+    public function redirect($path)
+    {
+        die(header('Location: ' . $path));
     }
 
 }

@@ -36,11 +36,11 @@
 
             <a class="navbar-brand" href="index.php">PHP</a>
             <ul class="nav navbar-nav">
-                <li class="<?php echo (!isset($_GET['act'])) ? "active" : ""; ?>">
+                <li class="<?php echo (!isset($_GET['ctrl'])) ? "active" : ""; ?>">
                     <a href="index.php">Главная</a>
                 </li>
-                <li class="<?php echo (isset($_GET['act'])) ? "active" : ""; ?>">
-                    <a href="?act=editor">Консоль редактора</a>
+                <li class="<?php echo (isset($_GET['ctrl'])) ? "active" : ""; ?>">
+                    <a href="?ctrl=editor">Консоль редактора</a>
                 </li>
             </ul>
         </div>

@@ -168,3 +168,22 @@ function pages($pageCount = 2)
 
     return $pageTotal;
 }
+
+function new_comment($id_article, $name, $comment){
+    $name = trim($name);
+    $comment = trim($comment);
+    $date = new DateTime();
+    $id_article = trim($id_article);
+    if ($name == "") {
+        return false;
+    }
+    //запрос
+    $sql = "INSERT INTO `comments` (`id_article`, `title`, `content`, `date`) VALUES ('%s', '%s', '%s', '%s')";
+    $query = sprintf($sql,escape($id_article), escape($name), escape($comment), $date->format('Y-m-d H:i:s'));
+    $result = mysqli_query(getDbConnect(), $query);
+    if (!$result) {
+        die(mysqli_error(getDbConnect()));
+    }
+    return true;
+
+}

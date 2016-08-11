@@ -1,29 +1,33 @@
 <?php
 function __autoload($classname)
 {
-    if (file_exists("controller/$classname.php")) {
-        include_once("controller/$classname.php");
+
+    $parts = explode('\\', $classname);
+
+    $class = join('/', $parts) . '.php';
+
+    if (file_exists($class)) {
+        include_once($class);
     } else {
         throw new Exception('Class not found');
     }
-
 }
+
 
 //подключаемся к БД
 require_once('startup.php');
 startup();
 
-$control = (isset($_GET['c'])) ? $_GET['c'] : '';
+$control = (isset($_GET['ctrl'])) ? $_GET['ctrl'] : '';
 $action = 'action_';
 $action .= (isset($_GET['act'])) ? $_GET['act'] : 'index';
 
 switch ($control) {
-    case 'article':
-        $controller = new C_Page();
+    case 'editor':
+        $controller = new \Controllers\EditorController();
         break;
     default:
-        $controller = new C_Page();
+        $controller = new \Controllers\DefaultController();
 }
-
 
 $controller->Request($action);

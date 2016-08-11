@@ -14,3 +14,13 @@
     <?php echo $article['content']?>
     <br>
 <hr>
+
+<form method="post">
+    Имя<sup style="color:red">*</sup>: <br>
+    <input type="text" name="name" value="<?php echo $name ?>">
+    <br><br>
+    Содержание: <br>
+    <textarea name="comment"><?php echo $comment?></textarea>
+    <br>
+    <input type="submit" value="Добавить">
+</form>

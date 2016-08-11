@@ -5,7 +5,7 @@
  * Date: 04.08.2016
  * Time: 16:03
  *  */
-require_once 'W:/domains/articlesBeta/model.php';
+require_once 'model.php';
 
 ?>
 <div class="panel panel-default">
@@ -30,16 +30,16 @@ require_once 'W:/domains/articlesBeta/model.php';
         </ul>
 
         <div class="row">
-            <div class="col-md-12 text-center">
-                <ul class="pagination">
-                    <?php
-                    for ($i = 1; $i <= $pageTotal; $i++) { ?>
-
-                        <li><a href="?pageNum=<?php echo "$i" ?>"><?php echo "$i" ?></a></li>
-
-                    <?php } ?>
-                </ul>
-            </div>
+<!--            <div class="col-md-12 text-center">-->
+<!--                <ul class="pagination">-->
+<!--                    --><?php
+//                    for ($i = 1; $i <= $pageTotal; $i++) { ?>
+<!---->
+<!--                        <li><a href="?pageNum=--><?php //echo "$i" ?><!--">--><?php //echo "$i" ?><!--</a></li>-->
+<!---->
+<!--                    --><?php //} ?>
+<!--                </ul>-->
+<!--            </div>-->
         </div>
     </div>
 </div>
