@@ -7,7 +7,7 @@ use Models\Articles;
 class DefaultController extends C_Base
 {
 
-    public function action_index()
+    public function actionIndex()
     {
         $pageNum = $_GET['pageNum'];
 

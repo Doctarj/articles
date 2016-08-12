@@ -4,10 +4,10 @@ namespace Models;
  class M_MYSQL{
 
      // Настройки подключения к БД.
-     private $hostname = 'articlesbeta';
-     private $username = 'mysql';
-     private $password = 'mysql';
-     private $dbName   = 'articles_db';
+     private $hostname = 'localhost';
+     private $username = 'root';
+     private $password = 'root';
+     private $dbName   = 'article_db';
 
      private static $instance;
 

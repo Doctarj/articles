@@ -1,8 +1,9 @@
 <?php
 
-namespace models;
+namespace Models;
 
-class Comments {
+class Comments
+{
 
     private static $instance;
 
@@ -23,12 +24,18 @@ class Comments {
         }
         return self::$instance;
     }
-    public function getAllComments($id_article){
-        $query = "SELECT * FROM `comments` ORDER BY `id_comments` ASC WHERE `id_article` = $id_article";
+
+    public function getAllComments($id_article)
+    {
+        $query = "SELECT * FROM `comments` WHERE `id_article` = $id_article ORDER BY `id_comment` ASC ";
 
         return $this->mysql->select($query);
     }
-    public function comments_new($name, $comment, $id_article){
-        $this->mysql->insert("comments", array('name' => $name, 'comment' => $comment, 'id_article' =>$id_article));
+
+    public function addNewComment($name, $comment, $id_article)
+    {
+        $now = new \DateTime();
+
+        $this->mysql->insert("comments", array('name' => $name, 'comment' => $comment, 'id_article' => $id_article, 'date_comment' => $now->format('Y-m-d H:m:i')));
     }
 }

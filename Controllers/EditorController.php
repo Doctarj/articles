@@ -3,36 +3,43 @@
 namespace Controllers;
 
 use Models\Articles;
+use Models\Comments;
 
 class EditorController extends C_Base
 {
 
-    public function action_show()
+    public function actionShow()
     {
         $article = Articles::getInstance()->getOneArticle($_GET['id']);
+        $comments = Comments::getInstance()->getAllComments($_GET['id']);
 
-        $this->content = $this->Template('themes/v_article.php', array('article' => $article));
+        $this->content = $this->Template('themes/v_article.php', array('article' => $article, 'comments' => $comments));
 
     }
 
 //генерация страницы редактора
-    public function action_index()
+    public function actionIndex()
     {
         $this->title = 'Панель редактора';
         $total = count(Articles::getInstance()->getAllArticles());
         $articles = Articles::getInstance()->getArticles();
+
+        foreach ($articles as &$article) {
+            $article['comments'] = Comments::getInstance()->getAllComments($article['id_article']);
+        }
+
         $this->content = $this->Template('themes/editor.php', array('articles' => $articles));
     }
 
 
 //генерация страницы редактирования статьи
-    public function action_edit()
+    public function actionEdit()
     {
         if (!empty($_POST) && isset($_POST['title']) && isset($_POST['content']) && isset ($_GET['id'])) {
 
 
-           Articles::getInstance()->articles_edit($_POST['title'], $_POST['content'],$_GET['id']);
-                $this->redirect('index.php');
+            Articles::getInstance()->articles_edit($_POST['title'], $_POST['content'], $_GET['id']);
+            $this->redirect('index.php');
 
 
         }
@@ -43,7 +50,7 @@ class EditorController extends C_Base
 
     }
 
-    public function action_new()
+    public function actionNew()
     {
         if (!empty($_POST) && isset($_POST['title']) && isset($_POST['content'])) {
 
@@ -55,7 +62,7 @@ class EditorController extends C_Base
         $this->content = $this->Template('themes/v_new.php');
     }
 
-    public function action_delete()
+    public function actionDelete()
     {
         Articles::getInstance()->articles_delete($_GET['id']);
         $this->redirect('index.php');

@@ -23,10 +23,13 @@ content - текст
                 <li class="list-group-item list-group-item-info">
                     <?php echo $article['title'] ?>
                     <i><?php echo $article['date'] ?></i>
+                    <i> Comments : <?php echo count($article['comments']) ?></i>
                     <div class="pull-right">
-                        <a class="btn btn-xs btn-success" href="?ctrl=editor&act=edit&id=<?php echo $article['id_article'] ?>">
+                        <a class="btn btn-xs btn-success"
+                           href="?ctrl=editor&act=edit&id=<?php echo $article['id_article'] ?>">
                             <i class="glyphicon glyphicon-pencil "></i></a>
-                        <a class="btn btn-xs btn-danger" href="?ctrl=editor&act=delete&id=<?php echo $article['id_article'] ?>">
+                        <a class="btn btn-xs btn-danger"
+                           href="?ctrl=editor&act=delete&id=<?php echo $article['id_article'] ?>">
                             <i class="glyphicon glyphicon-remove "></i></a><br>
 
                     </div>
@@ -35,7 +38,8 @@ content - текст
 
         </ul>
     </div>
-    <div class="panel-footer text-right"><a class="btn btn-xs btn-warning " href="?ctrl=editor&act=new">New article</a></div>
+    <div class="panel-footer text-right"><a class="btn btn-xs btn-warning " href="?ctrl=editor&act=new">New article</a>
+    </div>
 </div>
 
 

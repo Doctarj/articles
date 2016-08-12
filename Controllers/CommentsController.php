@@ -2,24 +2,24 @@
 
 namespace Controllers;
 
-use models\Comments;
+use Models\Comments;
 
-class CommentsController extends C_Base{
+class CommentsController extends C_Base
+{
 
-    public function action_index()
+    public function actionIndex()
     {
-
-
         $comments = Comments::getInstance()->getAllComments($_GET['id']);
         $this->content = $this->Template('themes/v_article.php', array('comments' => $comments));
     }
-    public function actionComments_new(){
 
+    public function actionNew()
+    {
         if (!empty($_POST) && isset($_POST['name']) && isset($_POST['comment'])) {
 
-            Comments::getInstance()->comments_new($_POST['name'], $_POST['comment'], $_POST['id_article']);
+            Comments::getInstance()->addNewComment($_POST['name'], $_POST['comment'], $_POST['id_article']);
 
-            $this->redirect('index.php');
+            $this->redirect('index.php?ctrl=editor&act=show&actcom=show&id=' . $_POST['id_article']);
         }
 
     }

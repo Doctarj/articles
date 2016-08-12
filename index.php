@@ -17,11 +17,9 @@ function __autoload($classname)
 
 
 $control = (isset($_GET['ctrl'])) ? $_GET['ctrl'] : '';
-$action = 'action_';
-$action .= (isset($_GET['act'])) ? $_GET['act'] : 'index';
-$actionComments = 'actionComments_';
+$action = 'action';
+$action .= ucfirst((isset($_GET['act'])) ? $_GET['act'] : 'index');
 
-$actionComments .=(isset($_GET['actcom']))? $_GET['actcom'] : 'index';
 
 switch ($control) {
     case 'comments':
@@ -35,5 +33,4 @@ switch ($control) {
 }
 
 $controller->Request($action);
-$controller->Request($actionComments);
 
