@@ -10,7 +10,7 @@ class CommentsController extends C_Base
     public function actionIndex()
     {
         $comments = Comments::getInstance()->getAllComments($_GET['id']);
-        $this->content = $this->Template('themes/v_article.php', array('comments' => $comments));
+        $this->content = $this->Template('themes/articleShow.php', array('comments' => $comments));
     }
 
     public function actionNew()

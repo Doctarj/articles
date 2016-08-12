@@ -14,7 +14,7 @@ class DefaultController extends C_Base
         $total = count(Articles::getInstance()->getAllArticles());
         $articles = Articles::getInstance()->getAllArticles();
 
-        $this->content = $this->Template('themes/index.php', array('short_articles' => $articles, 'pageTotal' => $total));
+        $this->content = $this->Template('themes/main.php', array('short_articles' => $articles, 'pageTotal' => $total));
     }
 
 }

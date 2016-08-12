@@ -28,7 +28,7 @@ abstract class C_Base extends C_Controller
     {
 
         $vars = array('title' => $this->title, 'content' => $this->content);
-        $page = $this->Template('themes/v_main.php', $vars);
+        $page = $this->Template('themes/layout.php', $vars);
 
         echo $page;
     }

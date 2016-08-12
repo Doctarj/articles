@@ -43,7 +43,7 @@ $error - ошибка юзера*/
 </div>
 <hr>
 
-<form method="post" action="index.php?ctrl=comments&act=new">
+<form method="post" action="index.php?ctrl=comments&act=new&id_article">
     Имя<sup style="color:red">*</sup>: <br>
     <input type="text" name="name">
     <br><br>

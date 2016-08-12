@@ -13,7 +13,7 @@ class EditorController extends C_Base
         $article = Articles::getInstance()->getOneArticle($_GET['id']);
         $comments = Comments::getInstance()->getAllComments($_GET['id']);
 
-        $this->content = $this->Template('themes/v_article.php', array('article' => $article, 'comments' => $comments));
+        $this->content = $this->Template('themes/articleShow.php', array('article' => $article, 'comments' => $comments));
 
     }
 
@@ -28,7 +28,7 @@ class EditorController extends C_Base
             $article['comments'] = Comments::getInstance()->getAllComments($article['id_article']);
         }
 
-        $this->content = $this->Template('themes/editor.php', array('articles' => $articles));
+        $this->content = $this->Template('themes/articleList.php', array('articles' => $articles));
     }
 
 
@@ -46,7 +46,7 @@ class EditorController extends C_Base
 
         $article = Articles::getInstance()->getOneArticle($_GET['id']);
 
-        $this->content = $this->Template('themes/v_edit.php', array('article' => $article));
+        $this->content = $this->Template('themes/articleEdit.php', array('article' => $article));
 
     }
 
@@ -59,7 +59,7 @@ class EditorController extends C_Base
             $this->redirect('index.php');
         }
 
-        $this->content = $this->Template('themes/v_new.php');
+        $this->content = $this->Template('themes/articleNew.php');
     }
 
     public function actionDelete()
