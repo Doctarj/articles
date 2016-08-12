@@ -36,8 +36,8 @@ abstract class C_Controller
         return ob_get_clean();
     }
 
-    public function __call($name, $params)
-    {
-        die('Не пишите фигню в url-адресе!!!');
-    }
+//    public function __call($name, $params)
+//    {
+//        die('Не пишите фигню в url-адресе!!!');
+//    }
 }

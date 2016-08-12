@@ -4,10 +4,10 @@ namespace Models;
 
 class Articles
 {
-    // ссылка на экземпляр класса
+
     private static $instance;
 
-    // ссылка на драйвер
+
     private $mysql;
 
     private function __construct()
@@ -15,20 +15,20 @@ class Articles
         $this->mysql = M_MYSQL::getInstance();
     }
 
-    // получение единственного экземпляра класса
+
     public static function getInstance()
     {
-        // гарантия одного экземпляра
+
         if (self::$instance === null) {
             self::$instance = new self;
         }
         return self::$instance;
     }
 
-    // общие методы для всех моделей
+
     public function getAllArticles()
     {
-        $query = "SELECT * FROM articles ORDER BY id_article ASC";
+        $query = "SELECT * FROM articles ORDER BY id_article ASC ";
         return $this->mysql->select($query);
     }
 

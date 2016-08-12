@@ -18,10 +18,36 @@
 
 <form method="post">
     Имя<sup style="color:red">*</sup>: <br>
-    <input type="text" name="name" value="<?php echo $name ?>">
+    <input type="text" name="name">
     <br><br>
     Содержание: <br>
-    <textarea name="comment"><?php echo $comment?></textarea>
+    <textarea name="comment"></textarea>
     <br>
-    <input type="submit" value="Добавить">
+    <input type="hidden" name="id_article" value="<?php echo $_GET['id']?> "><br/>
+    <a class="btn btn-xs btn-warning" href="?ctrl=comments&actcom=new">
+        <i>Add Comment</i></a>
 </form>
+
+<div class="panel panel-default">
+    <div class="panel-heading">
+        Comments list
+    </div>
+    <div class="panel-body">
+        <ul class="list-group">
+
+            <?php foreach ($comments as $comment): ?>
+
+                <li class="list-group-item list-group-item-info">
+                    <?php echo $comment['name'] ?> <br/>
+                   <?php echo $comment['comment'] ?>
+                    <div class="pull-right">
+
+                        <a class="btn btn-xs btn-danger" href="?ctrl=comments&actcom=delete&idcom=<?php echo $comment['id_comment'] ?>">
+                            <i class="glyphicon glyphicon-remove "></i></a><br>
+
+                    </div>
+                </li>
+            <?php endforeach ?>
+
+        </ul>
+    </div>

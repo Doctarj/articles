@@ -19,8 +19,14 @@ function __autoload($classname)
 $control = (isset($_GET['ctrl'])) ? $_GET['ctrl'] : '';
 $action = 'action_';
 $action .= (isset($_GET['act'])) ? $_GET['act'] : 'index';
+$actionComments = 'actionComments_';
+
+$actionComments .=(isset($_GET['actcom']))? $_GET['actcom'] : 'index';
 
 switch ($control) {
+    case 'comments':
+        $controller = new\Controllers\CommentsController();
+        break;
     case 'editor':
         $controller = new \Controllers\EditorController();
         break;
@@ -29,3 +35,5 @@ switch ($control) {
 }
 
 $controller->Request($action);
+$controller->Request($actionComments);
+
