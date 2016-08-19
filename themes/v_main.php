@@ -25,6 +25,7 @@
             crossorigin="anonymous"></script>
 </head>
 <body>
+<h3><?php echo "Здравствуй, ".$_SESSION['login']?></h3>
 <div class="container">
 
     <div class="row">
@@ -41,6 +42,9 @@
                 </li>
                 <li class="<?php echo (isset($_GET['ctrl'])) ? "active" : ""; ?>">
                     <a href="?ctrl=editor">Консоль редактора</a>
+                </li>
+                <li class="<?php echo (!isset($_GET['ctrl'])) ? "active" : ""; ?>">
+                    <a href="/themes/auth.php">Выход</a>
                 </li>
             </ul>
         </div>

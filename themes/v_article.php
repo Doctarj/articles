@@ -28,6 +28,7 @@ $error - ошибка юзера*/
                     <?php echo $comment['name'] ?> <br/>
                     <?php echo $comment['comment'] ?>
                     <?php echo $comment['date_comment'] ?>
+
                     <div class="pull-right">
 
                         <a class="btn btn-xs btn-danger"
@@ -35,7 +36,9 @@ $error - ошибка юзера*/
                             <i class="glyphicon glyphicon-remove "></i></a><br>
 
                     </div>
+
                 </li>
+
             <?php endforeach ?>
 
         </ul>
@@ -44,8 +47,8 @@ $error - ошибка юзера*/
 <hr>
 
 <form method="post" action="index.php?ctrl=comments&act=new">
-    Имя<sup style="color:red">*</sup>: <br>
-    <input type="text" name="name">
+    Имя<sup style="color:red">*</sup>:
+    <label><?php echo $_SESSION['login']?></label>
     <br><br>
     Содержание: <br>
     <textarea name="comment"></textarea>

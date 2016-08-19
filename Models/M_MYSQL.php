@@ -4,10 +4,10 @@ namespace Models;
  class M_MYSQL{
 
      // Настройки подключения к БД.
-     private $hostname = 'localhost';
-     private $username = 'root';
-     private $password = 'root';
-     private $dbName   = 'article_db';
+     private $hostname = 'articlesBeta';
+     private $username = 'mysql';
+     private $password = 'mysql';
+     private $dbName   = 'articles_db';
 
      private static $instance;
 
@@ -45,6 +45,7 @@ namespace Models;
          while ($row = mysqli_fetch_assoc($result)) {
              $arr[] = $row;
          }
+
          return $arr;
      }
 
@@ -67,6 +68,7 @@ namespace Models;
          $values = implode(', ', $values);
 
          $query = sprintf("INSERT INTO `%s` (%s) VALUES (%s)", $table, $columns, $values);
+
          $result = mysqli_query($this->link, $query);
          if (!$result) {
              die(mysqli_error($this->link));

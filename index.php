@@ -1,4 +1,28 @@
 <?php
+session_start();
+
+if(!isset($_COOKIE['email'])&& !isset($_SESSION['email']) && !isset($_POST['email'])){
+
+    header("Location: themes/auth.php");
+}
+else{
+    if(isset($_POST['email'])){
+        $email = $_POST['email'];
+}
+else{
+    if(isset($_SESSION['email'])) {
+        $email = $_SESSION['email'];
+        setcookie("name", $_SESSION['email'], time() + 3600 * 24 * 7);
+
+    }
+    else {
+        if (isset($_COOKIE['email'])) {
+            $login = $_COOKIE['email'];
+        }
+    }
+}
+}
+
 function __autoload($classname)
 {
 
@@ -22,6 +46,9 @@ $action .= ucfirst((isset($_GET['act'])) ? $_GET['act'] : 'index');
 
 
 switch ($control) {
+    case 'users':
+        $controller = new\Controllers\UsersController();
+        break;
     case 'comments':
         $controller = new\Controllers\CommentsController();
         break;
